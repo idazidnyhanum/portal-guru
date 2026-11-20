@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0284c7" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Portal Guru" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <title>Portal Guru SDN Lendang Telaga</title>
+    <meta name="description" content="Aplikasi terpadu administrasi pembelajaran, generator perangkat asesmen STS/SAS, dan gamifikasi kelas interaktif untuk guru SDN Lendang Telaga." />
+    <meta property="og:title" content="Portal Guru SDN Lendang Telaga" />
+    <meta property="og:description" content="Aplikasi terpadu administrasi pembelajaran, generator perangkat asesmen STS/SAS, dan gamifikasi kelas interaktif untuk guru SDN Lendang Telaga." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      (function () {
+        try {
+          var ownDesc = Object.getOwnPropertyDescriptor(window, 'fetch');
+          var protoDesc =
+            typeof Window !== 'undefined' && Window.prototype
+              ? Object.getOwnPropertyDescriptor(Window.prototype, 'fetch')
+              : null;
+          var activeDesc = ownDesc || protoDesc;
+          if (
+            activeDesc &&
+            !activeDesc.writable &&
+            !activeDesc.set &&
+            (!ownDesc || ownDesc.configurable)
+          ) {
+            var currentFetch = typeof window.fetch === 'function' ? window.fetch.bind(window) : undefined;
+            Object.defineProperty(window, 'fetch', {
+              configurable: true,
+              enumerable: true,
+              get: function () {
+                return currentFetch;
+              },
+              set: function (nextFetch) {
+                currentFetch = nextFetch;
+              },
+            });
+          }
+        } catch (_e) {
+          // ignore if environment marks window.fetch non-configurable
+        }
+
+        function isExtensionFetchError(filename, message, stack) {
+          var src = String(filename || '');
+          var msg = String(message || '');
+          var stk = String(stack || '');
+          return (
+            msg.indexOf('property fetch') !== -1 &&
+            (src.indexOf('chrome-extension://') === 0 || stk.indexOf('chrome-extension://') !== -1)
+          );
+        }
+
+        window.addEventListener(
+          'error',
+          function (event) {
+            var stack = event && event.error && event.error.stack ? event.error.stack : '';
+            if (isExtensionFetchError(event && event.filename, event && event.message, stack)) {
+              event.preventDefault();
+              event.stopImmediatePropagation();
+            }
+          },
+          true
+        );
+
+        window.addEventListener(
+          'unhandledrejection',
+          function (event) {
+            var reason = event && event.reason;
+            var msg = reason && reason.message ? reason.message : reason;
+            var stack = reason && reason.stack ? reason.stack : '';
+            if (isExtensionFetchError('', msg, stack)) {
+              event.preventDefault();
+              event.stopImmediatePropagation();
+            }
+          },
+          true
+        );
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

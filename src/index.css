@@ -1,0 +1,438 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #f8fafc;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Touch-friendly minimum target for PID & mobile */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Official Paper Sheet Preview & Print Precision */
+.paper-sheet-a4 {
+  width: 210mm;
+  min-height: 297mm;
+}
+
+.paper-sheet-f4 {
+  width: 215mm;
+  min-height: 330mm;
+}
+
+.paper-sheet-a4-landscape {
+  width: 297mm;
+  min-height: 210mm;
+}
+
+.paper-sheet-f4-landscape {
+  width: 330mm;
+  min-height: 215mm;
+}
+
+@media screen {
+  .paper-preview-wrapper {
+    overflow-x: auto;
+    padding-bottom: 1.5rem;
+  }
+
+  .paper-sheet {
+    background: #ffffff;
+    color: #0f172a;
+    margin: 0 auto 2rem auto;
+    padding: 15mm 16mm;
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+    border: 1px solid #cbd5e1;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+}
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .paper-preview-wrapper {
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .paper-zoom-frame,
+  .paper-zoom-inner {
+    width: auto !important;
+    height: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+
+  .paper-sheet {
+    width: 100% !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: 11pt !important;
+    line-height: 1.4 !important;
+  }
+
+  .print-page-break {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* Articulated Running Race Animations (transform-only for smooth 60fps) */
+@keyframes runnerBodyBob {
+  0%, 100% {
+    transform: translateY(0px) rotate(4deg);
+  }
+  25% {
+    transform: translateY(-3px) rotate(6deg);
+  }
+  50% {
+    transform: translateY(0.5px) rotate(4deg);
+  }
+  75% {
+    transform: translateY(-3px) rotate(6deg);
+  }
+}
+
+@keyframes runnerLegA {
+  0% {
+    transform: rotate(-42deg);
+  }
+  50% {
+    transform: rotate(44deg);
+  }
+  100% {
+    transform: rotate(-42deg);
+  }
+}
+
+@keyframes runnerLegB {
+  0% {
+    transform: rotate(44deg);
+  }
+  50% {
+    transform: rotate(-42deg);
+  }
+  100% {
+    transform: rotate(44deg);
+  }
+}
+
+@keyframes runnerKneeA {
+  0% {
+    transform: rotate(18deg);
+  }
+  30% {
+    transform: rotate(62deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  80% {
+    transform: rotate(48deg);
+  }
+  100% {
+    transform: rotate(18deg);
+  }
+}
+
+@keyframes runnerKneeB {
+  0% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(48deg);
+  }
+  50% {
+    transform: rotate(18deg);
+  }
+  80% {
+    transform: rotate(62deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes runnerArmA {
+  0% {
+    transform: rotate(46deg);
+  }
+  50% {
+    transform: rotate(-44deg);
+  }
+  100% {
+    transform: rotate(46deg);
+  }
+}
+
+@keyframes runnerArmB {
+  0% {
+    transform: rotate(-44deg);
+  }
+  50% {
+    transform: rotate(46deg);
+  }
+  100% {
+    transform: rotate(-44deg);
+  }
+}
+
+/* Articulated Horse + Jockey Animations */
+@keyframes horseGallopBob {
+  0%, 100% {
+    transform: translateY(0px) rotate(-1.5deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(2deg);
+  }
+}
+
+@keyframes horseLegFL {
+  0% {
+    transform: rotate(-36deg);
+  }
+  50% {
+    transform: rotate(38deg);
+  }
+  100% {
+    transform: rotate(-36deg);
+  }
+}
+
+@keyframes horseLegFR {
+  0% {
+    transform: rotate(22deg);
+  }
+  50% {
+    transform: rotate(-40deg);
+  }
+  100% {
+    transform: rotate(22deg);
+  }
+}
+
+@keyframes horseLegBL {
+  0% {
+    transform: rotate(34deg);
+  }
+  50% {
+    transform: rotate(-36deg);
+  }
+  100% {
+    transform: rotate(34deg);
+  }
+}
+
+@keyframes horseLegBR {
+  0% {
+    transform: rotate(-24deg);
+  }
+  50% {
+    transform: rotate(36deg);
+  }
+  100% {
+    transform: rotate(-24deg);
+  }
+}
+
+@keyframes horseTailWave {
+  0%, 100% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes jockeyTorsoPump {
+  0%, 100% {
+    transform: translateY(0px) rotate(6deg);
+  }
+  50% {
+    transform: translateY(-2.5px) rotate(13deg);
+  }
+}
+
+@keyframes jockeyArmPump {
+  0%, 100% {
+    transform: rotate(-16deg);
+  }
+  50% {
+    transform: rotate(26deg);
+  }
+}
+
+@keyframes jockeyLegPump {
+  0%, 100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+.runner-body {
+  animation: runnerBodyBob 0.44s ease-in-out infinite;
+  transform-origin: center center;
+}
+.runner-leg-front {
+  animation: runnerLegA 0.44s linear infinite;
+}
+.runner-leg-back {
+  animation: runnerLegB 0.44s linear infinite;
+}
+.runner-knee-front {
+  animation: runnerKneeA 0.44s linear infinite;
+}
+.runner-knee-back {
+  animation: runnerKneeB 0.44s linear infinite;
+}
+.runner-arm-front {
+  animation: runnerArmA 0.44s linear infinite;
+}
+.runner-arm-back {
+  animation: runnerArmB 0.44s linear infinite;
+}
+
+.horse-rig {
+  animation: horseGallopBob 0.42s ease-in-out infinite;
+  transform-origin: center center;
+}
+.horse-rig-turbo {
+  animation: horseGallopBob 0.28s ease-in-out infinite;
+  transform-origin: center center;
+}
+.horse-leg-fl {
+  animation: horseLegFL 0.42s linear infinite;
+}
+.horse-leg-fr {
+  animation: horseLegFR 0.42s linear infinite;
+}
+.horse-leg-bl {
+  animation: horseLegBL 0.42s linear infinite;
+}
+.horse-leg-br {
+  animation: horseLegBR 0.42s linear infinite;
+}
+.horse-tail {
+  animation: horseTailWave 0.38s ease-in-out infinite;
+}
+.jockey-torso {
+  animation: jockeyTorsoPump 0.42s ease-in-out infinite;
+}
+.jockey-arm {
+  animation: jockeyArmPump 0.42s ease-in-out infinite;
+}
+.jockey-leg {
+  animation: jockeyLegPump 0.42s ease-in-out infinite;
+}
+
+.anim-paused {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .runner-body,
+  .runner-leg-front,
+  .runner-leg-back,
+  .runner-knee-front,
+  .runner-knee-back,
+  .runner-arm-front,
+  .runner-arm-back,
+  .horse-rig,
+  .horse-rig-turbo,
+  .horse-leg-fl,
+  .horse-leg-fr,
+  .horse-leg-bl,
+  .horse-leg-br,
+  .horse-tail,
+  .jockey-torso,
+  .jockey-arm,
+  .jockey-leg,
+  .confetti-piece,
+  .podium-block {
+    animation: none !important;
+  }
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-16px) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(210px) rotate(320deg);
+    opacity: 0;
+  }
+}
+
+@keyframes podiumRise {
+  0% {
+    transform: translateY(18px) scale(0.96);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.confetti-piece {
+  animation: confettiFall 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  will-change: transform, opacity;
+}
+
+.podium-block {
+  animation: podiumRise 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+

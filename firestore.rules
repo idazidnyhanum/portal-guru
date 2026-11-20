@@ -1,0 +1,264 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isSignedIn() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function parentUserExists(userId) {
+      return exists(/databases/$(database)/documents/users/$(userId));
+    }
+
+    function isValidUser(data, userId) {
+      return data.keys().hasAll(['ownerUid', 'selectedTeacherId', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['ownerUid', 'selectedTeacherId', 'createdAt', 'updatedAt'])
+        && data.ownerUid is string
+        && data.ownerUid == userId
+        && data.ownerUid == request.auth.uid
+        && isValidId(data.ownerUid)
+        && data.selectedTeacherId is string
+        && data.selectedTeacherId.size() > 0
+        && data.selectedTeacherId.size() <= 64
+        && data.selectedTeacherId.matches('^[a-zA-Z0-9_\\-]+$')
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidRoster(data, userId) {
+      return data.keys().hasAll(['ownerUid', 'teacherId', 'kelas', 'students', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['ownerUid', 'teacherId', 'kelas', 'students', 'createdAt', 'updatedAt'])
+        && data.ownerUid is string
+        && data.ownerUid == userId
+        && data.ownerUid == request.auth.uid
+        && isValidId(data.teacherId)
+        && data.teacherId.size() <= 64
+        && data.kelas is int
+        && data.kelas >= 1
+        && data.kelas <= 6
+        && data.students is list
+        && data.students.size() <= 60
+        && (data.students.size() == 0 || (data.students[0] is string && data.students[0].size() <= 100))
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidWorkspaceItem(data, userId) {
+      return data.keys().hasAll(['ownerUid', 'teacherId', 'itemType', 'title', 'mapel', 'kelas', 'payload', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['ownerUid', 'teacherId', 'itemType', 'title', 'mapel', 'kelas', 'payload', 'createdAt', 'updatedAt'])
+        && data.ownerUid is string
+        && data.ownerUid == userId
+        && data.ownerUid == request.auth.uid
+        && isValidId(data.teacherId)
+        && data.teacherId.size() <= 64
+        && data.itemType in ['assessment', 'game', 'rpm', 'cp-materi']
+        && data.title is string
+        && data.title.size() > 0
+        && data.title.size() <= 200
+        && data.mapel is string
+        && data.mapel.size() > 0
+        && data.mapel.size() <= 80
+        && data.kelas is int
+        && data.kelas >= 1
+        && data.kelas <= 6
+        && data.payload is map
+        && data.payload.keys().size() <= 40
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidGameScore(data, userId) {
+      return data.keys().hasAll(['ownerUid', 'teacherId', 'gameId', 'gameTitle', 'mapel', 'kelas', 'roomCode', 'savedAt', 'entries', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['ownerUid', 'teacherId', 'gameId', 'gameTitle', 'mapel', 'kelas', 'roomCode', 'savedAt', 'entries', 'createdAt', 'updatedAt'])
+        && data.ownerUid is string
+        && data.ownerUid == userId
+        && data.ownerUid == request.auth.uid
+        && isValidId(data.teacherId)
+        && data.teacherId.size() <= 64
+        && isValidId(data.gameId)
+        && data.gameId.size() <= 128
+        && data.gameTitle is string
+        && data.gameTitle.size() > 0
+        && data.gameTitle.size() <= 200
+        && data.mapel is string
+        && data.mapel.size() > 0
+        && data.mapel.size() <= 80
+        && data.kelas is int
+        && data.kelas >= 1
+        && data.kelas <= 6
+        && data.roomCode is string
+        && data.roomCode.size() <= 32
+        && data.savedAt is string
+        && data.savedAt.size() <= 64
+        && data.entries is list
+        && data.entries.size() <= 60
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    function isValidPublicGame(data) {
+      return data.keys().hasAll(['ownerUid', 'id', 'title', 'topic', 'teacherId', 'teacherName', 'mapel', 'kelas', 'template', 'items', 'players', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['ownerUid', 'id', 'title', 'topic', 'teacherId', 'teacherName', 'mapel', 'kelas', 'template', 'items', 'players', 'createdAt', 'updatedAt'])
+        && data.ownerUid is string
+        && data.ownerUid == request.auth.uid
+        && isValidId(data.ownerUid)
+        && isValidId(data.id)
+        && data.title is string
+        && data.title.size() > 0
+        && data.title.size() <= 200
+        && data.topic is string
+        && data.topic.size() <= 300
+        && isValidId(data.teacherId)
+        && data.teacherId.size() <= 64
+        && data.teacherName is string
+        && data.teacherName.size() > 0
+        && data.teacherName.size() <= 120
+        && data.mapel is string
+        && data.mapel.size() > 0
+        && data.mapel.size() <= 80
+        && data.kelas is int
+        && data.kelas >= 1
+        && data.kelas <= 6
+        && data.template in ['running-race', 'crossword', 'word-scramble', 'horse-race']
+        && data.items is list
+        && data.items.size() > 0
+        && data.items.size() <= 30
+        && data.players is list
+        && data.players.size() <= 60
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp;
+    }
+
+    match /publicGames/{gameId} {
+      allow get: if isValidId(gameId);
+      allow list: if false;
+      allow create: if isValidId(gameId)
+        && isSignedIn()
+        && isValidPublicGame(incoming())
+        && incoming().id == gameId
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+      allow update: if isValidId(gameId)
+        && isSignedIn()
+        && existing().ownerUid == request.auth.uid
+        && isValidPublicGame(incoming())
+        && incoming().ownerUid == existing().ownerUid
+        && incoming().id == existing().id
+        && incoming().teacherId == existing().teacherId
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && incoming().diff(existing()).affectedKeys().hasOnly(['title', 'topic', 'teacherName', 'mapel', 'kelas', 'template', 'items', 'players', 'updatedAt']);
+      allow delete: if isValidId(gameId) && isSignedIn() && existing().ownerUid == request.auth.uid;
+    }
+
+    match /users/{userId} {
+      allow get: if isValidId(userId) && isOwner(userId);
+      allow list: if false;
+      allow create: if isValidId(userId)
+        && isOwner(userId)
+        && isValidUser(incoming(), userId)
+        && incoming().createdAt == request.time
+        && incoming().updatedAt == request.time;
+      allow update: if isValidId(userId)
+        && isOwner(userId)
+        && isValidUser(incoming(), userId)
+        && incoming().ownerUid == existing().ownerUid
+        && incoming().createdAt == existing().createdAt
+        && incoming().updatedAt == request.time
+        && incoming().diff(existing()).affectedKeys().hasOnly(['selectedTeacherId', 'updatedAt']);
+      allow delete: if isValidId(userId) && isOwner(userId);
+
+      match /rosters/{rosterId} {
+        allow get: if isValidId(userId) && isValidId(rosterId) && isOwner(userId) && parentUserExists(userId);
+        allow list: if isValidId(userId) && isOwner(userId) && resource.data.ownerUid == request.auth.uid;
+        allow create: if isValidId(userId)
+          && isValidId(rosterId)
+          && isOwner(userId)
+          && isValidRoster(incoming(), userId)
+          && incoming().createdAt == request.time
+          && incoming().updatedAt == request.time
+          && parentUserExists(userId);
+        allow update: if isValidId(userId)
+          && isValidId(rosterId)
+          && isOwner(userId)
+          && isValidRoster(incoming(), userId)
+          && incoming().ownerUid == existing().ownerUid
+          && incoming().teacherId == existing().teacherId
+          && incoming().kelas == existing().kelas
+          && incoming().createdAt == existing().createdAt
+          && incoming().updatedAt == request.time
+          && incoming().diff(existing()).affectedKeys().hasOnly(['students', 'updatedAt'])
+          && parentUserExists(userId);
+        allow delete: if isValidId(userId) && isValidId(rosterId) && isOwner(userId);
+      }
+
+      match /workspaceItems/{itemId} {
+        allow get: if isValidId(userId) && isValidId(itemId) && isOwner(userId) && parentUserExists(userId);
+        allow list: if isValidId(userId) && isOwner(userId) && resource.data.ownerUid == request.auth.uid;
+        allow create: if isValidId(userId)
+          && isValidId(itemId)
+          && isOwner(userId)
+          && isValidWorkspaceItem(incoming(), userId)
+          && incoming().createdAt == request.time
+          && incoming().updatedAt == request.time
+          && parentUserExists(userId);
+        allow update: if isValidId(userId)
+          && isValidId(itemId)
+          && isOwner(userId)
+          && isValidWorkspaceItem(incoming(), userId)
+          && incoming().ownerUid == existing().ownerUid
+          && incoming().teacherId == existing().teacherId
+          && incoming().itemType == existing().itemType
+          && incoming().createdAt == existing().createdAt
+          && incoming().updatedAt == request.time
+          && incoming().diff(existing()).affectedKeys().hasOnly(['title', 'mapel', 'kelas', 'payload', 'updatedAt'])
+          && parentUserExists(userId);
+        allow delete: if isValidId(userId) && isValidId(itemId) && isOwner(userId);
+      }
+
+      match /gameScores/{scoreId} {
+        allow get: if isValidId(userId) && isValidId(scoreId) && isOwner(userId) && parentUserExists(userId);
+        allow list: if isValidId(userId) && isOwner(userId) && resource.data.ownerUid == request.auth.uid;
+        allow create: if isValidId(userId)
+          && isValidId(scoreId)
+          && isOwner(userId)
+          && isValidGameScore(incoming(), userId)
+          && incoming().createdAt == request.time
+          && incoming().updatedAt == request.time
+          && parentUserExists(userId);
+        allow update: if isValidId(userId)
+          && isValidId(scoreId)
+          && isOwner(userId)
+          && isValidGameScore(incoming(), userId)
+          && incoming().ownerUid == existing().ownerUid
+          && incoming().teacherId == existing().teacherId
+          && incoming().gameId == existing().gameId
+          && incoming().createdAt == existing().createdAt
+          && incoming().updatedAt == request.time
+          && incoming().diff(existing()).affectedKeys().hasOnly(['gameTitle', 'mapel', 'kelas', 'roomCode', 'savedAt', 'entries', 'updatedAt'])
+          && parentUserExists(userId);
+        allow delete: if isValidId(userId) && isValidId(scoreId) && isOwner(userId);
+      }
+    }
+  }
+}

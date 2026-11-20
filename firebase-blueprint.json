@@ -1,0 +1,224 @@
+{
+  "entities": {
+    "TeacherUserProfile": {
+      "title": "TeacherUserProfile",
+      "description": "Cloud profile anchor for an authenticated teacher account.",
+      "type": "object",
+      "properties": {
+        "ownerUid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner.",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "selectedTeacherId": {
+          "type": "string",
+          "description": "Selected SDN Lendang Telaga teacher workspace ID.",
+          "maxLength": 64,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server last-updated timestamp."
+        }
+      },
+      "required": ["ownerUid", "selectedTeacherId", "createdAt", "updatedAt"]
+    },
+    "ClassRoster": {
+      "title": "ClassRoster",
+      "description": "Student roster per teacher and grade level (Kelas 1-6).",
+      "type": "object",
+      "properties": {
+        "ownerUid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner.",
+          "maxLength": 128
+        },
+        "teacherId": {
+          "type": "string",
+          "description": "Teacher workspace identifier.",
+          "maxLength": 64,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "kelas": {
+          "type": "integer",
+          "description": "Grade level from 1 to 6."
+        },
+        "students": {
+          "type": "array",
+          "description": "Ordered list of student names (max 60)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server last-updated timestamp."
+        }
+      },
+      "required": ["ownerUid", "teacherId", "kelas", "students", "createdAt", "updatedAt"]
+    },
+    "WorkspaceItem": {
+      "title": "WorkspaceItem",
+      "description": "Saved STS/SAS assessment blueprint or interactive educational game.",
+      "type": "object",
+      "properties": {
+        "ownerUid": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner.",
+          "maxLength": 128
+        },
+        "teacherId": {
+          "type": "string",
+          "description": "Teacher workspace identifier.",
+          "maxLength": 64,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "itemType": {
+          "type": "string",
+          "enum": ["assessment", "game", "rpm", "cp-materi"],
+          "description": "Item category."
+        },
+        "title": {
+          "type": "string",
+          "description": "Display title in Folder Saya.",
+          "maxLength": 200
+        },
+        "mapel": {
+          "type": "string",
+          "description": "Subject name.",
+          "maxLength": 80
+        },
+        "kelas": {
+          "type": "integer",
+          "description": "Grade level from 1 to 6."
+        },
+        "payload": {
+          "type": "object",
+          "description": "Structured assessment or game data map."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server creation timestamp."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server last-updated timestamp."
+        }
+      },
+      "required": [
+        "ownerUid",
+        "teacherId",
+        "itemType",
+        "title",
+        "mapel",
+        "kelas",
+        "payload",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "PublicGame": {
+      "title": "PublicGame",
+      "description": "Published educational game accessible by ID for student QR play across devices.",
+      "type": "object",
+      "properties": {
+        "ownerUid": { "type": "string", "maxLength": 128 },
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 200 },
+        "topic": { "type": "string", "maxLength": 300 },
+        "teacherId": { "type": "string", "maxLength": 64 },
+        "teacherName": { "type": "string", "maxLength": 120 },
+        "mapel": { "type": "string", "maxLength": 80 },
+        "kelas": { "type": "integer" },
+        "template": {
+          "type": "string",
+          "enum": ["running-race", "crossword", "word-scramble", "horse-race"]
+        },
+        "items": { "type": "array" },
+        "players": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "ownerUid",
+        "id",
+        "title",
+        "topic",
+        "teacherId",
+        "teacherName",
+        "mapel",
+        "kelas",
+        "template",
+        "items",
+        "players",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "GameScoreRecord": {
+      "title": "GameScoreRecord",
+      "description": "Saved classroom game score recap for a teacher.",
+      "type": "object",
+      "properties": {
+        "ownerUid": { "type": "string", "maxLength": 128 },
+        "teacherId": { "type": "string", "maxLength": 64 },
+        "gameId": { "type": "string", "maxLength": 128 },
+        "gameTitle": { "type": "string", "maxLength": 200 },
+        "mapel": { "type": "string", "maxLength": 80 },
+        "kelas": { "type": "integer" },
+        "roomCode": { "type": "string", "maxLength": 32 },
+        "savedAt": { "type": "string", "maxLength": 64 },
+        "entries": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "ownerUid",
+        "teacherId",
+        "gameId",
+        "gameTitle",
+        "mapel",
+        "kelas",
+        "roomCode",
+        "savedAt",
+        "entries",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/publicGames/{gameId}": {
+      "schema": { "$ref": "#/entities/PublicGame" },
+      "description": "Public games readable by exact ID for student play."
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/TeacherUserProfile" },
+      "description": "Per-account root profile document."
+    },
+    "/users/{userId}/rosters/{rosterId}": {
+      "schema": { "$ref": "#/entities/ClassRoster" },
+      "description": "Student roster per teacher and grade."
+    },
+    "/users/{userId}/workspaceItems/{itemId}": {
+      "schema": { "$ref": "#/entities/WorkspaceItem" },
+      "description": "Saved assessments and games in Folder Saya."
+    },
+    "/users/{userId}/gameScores/{scoreId}": {
+      "schema": { "$ref": "#/entities/GameScoreRecord" },
+      "description": "Saved game score recaps per teacher."
+    }
+  }
+}

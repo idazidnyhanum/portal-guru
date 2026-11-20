@@ -1,0 +1,316 @@
+{
+  "rosters": {},
+  "items": {
+    "baiq-aprilianingsih": [
+      {
+        "id": "game_1795055149446",
+        "teacherId": "baiq-aprilianingsih",
+        "itemType": "game",
+        "title": "Lomba Lari Bank Soal SD (150 Soal)",
+        "mapel": "Matematika",
+        "kelas": 6,
+        "createdAt": "2026-11-19T02:31:00.379Z",
+        "updatedAt": "2026-11-19T02:31:00.379Z",
+        "payload": {
+          "id": "game_1795055149446",
+          "title": "Lomba Lari Bank Soal SD (150 Soal)",
+          "topic": "rasio",
+          "teacherId": "baiq-aprilianingsih",
+          "teacherName": "Baiq Aprilianingsih, S.Pd",
+          "mapel": "Matematika",
+          "kelas": 6,
+          "template": "horse-race",
+          "playMode": "live-mobile",
+          "items": [
+            {
+              "id": "gq_1795055421201_1",
+              "prompt": "Rasio paling sederhana dari 12 : 18 adalah...",
+              "answer": "2 : 3",
+              "options": [
+                "2 : 3",
+                "3 : 2",
+                "4 : 6",
+                "1 : 2"
+              ],
+              "clue": "Bagilah kedua bilangan dengan FPB-nya, yaitu 6."
+            },
+            {
+              "id": "gq_1795055421201_2",
+              "prompt": "Ada 5 kuda putih dan 10 kuda cokelat. Rasio kuda putih terhadap kuda cokelat adalah...",
+              "answer": "1 : 2",
+              "options": [
+                "1 : 2",
+                "2 : 1",
+                "1 : 3",
+                "5 : 15"
+              ],
+              "clue": "Sederhanakan perbandingan 5 : 10 dengan membagi keduanya dengan 5."
+            },
+            {
+              "id": "gq_1795055421201_3",
+              "prompt": "Jika rasio A : B adalah 3 : 4 dan nilai A = 15, maka nilai B adalah...",
+              "answer": "20",
+              "options": [
+                "16",
+                "18",
+                "20",
+                "24"
+              ],
+              "clue": "Kalikan angka 4 dengan hasil pembagian 15 oleh 3."
+            },
+            {
+              "id": "gq_1795055421201_4",
+              "prompt": "Di kelas ada 14 siswa laki-laki dan 16 siswa perempuan. Rasio siswa laki-laki terhadap seluruh siswa adalah...",
+              "answer": "7 : 15",
+              "options": [
+                "7 : 8",
+                "7 : 15",
+                "8 : 15",
+                "14 : 16"
+              ],
+              "clue": "Hitung total seluruh siswa terlebih dahulu, lalu sederhanakan rasionya."
+            },
+            {
+              "id": "gq_1795055421201_5",
+              "prompt": "Untuk membuat 2 kue butuh 6 butir telur. Berapa telur yang dibutuhkan untuk membuat 5 kue?",
+              "answer": "15 telur",
+              "options": [
+                "12 telur",
+                "15 telur",
+                "18 telur",
+                "10 telur"
+              ],
+              "clue": "Cari tahu terlebih dahulu jumlah telur yang dibutuhkan untuk 1 kue."
+            },
+            {
+              "id": "gq_1795055421201_6",
+              "prompt": "Rasio uang Budi dan Ani adalah 2 : 3. Jika jumlah uang mereka Rp50.000, uang Budi adalah...",
+              "answer": "Rp20.000",
+              "options": [
+                "Rp10.000",
+                "Rp20.000",
+                "Rp25.000",
+                "Rp30.000"
+              ],
+              "clue": "Jumlahkan angka rasio (2 + 3) sebagai pembagi dari total uang."
+            },
+            {
+              "id": "gq_1795055421201_7",
+              "prompt": "Rasio umur Kakak dan Adik adalah 5 : 2. Jika selisih umur mereka 9 tahun, umur Adik adalah...",
+              "answer": "6 tahun",
+              "options": [
+                "3 tahun",
+                "6 tahun",
+                "12 tahun",
+                "15 tahun"
+              ],
+              "clue": "Kurangkan angka rasio (5 - 2) untuk menemukan nilai dari 1 bagian."
+            },
+            {
+              "id": "gq_1795055421201_8",
+              "prompt": "Bentuk paling sederhana dari rasio 50 cm : 2 meter adalah...",
+              "answer": "1 : 4",
+              "options": [
+                "1 : 4",
+                "25 : 1",
+                "1 : 2",
+                "4 : 1"
+              ],
+              "clue": "Ubah satuan meter menjadi sentimeter terlebih dahulu sebelum menyederhanakan."
+            },
+            {
+              "id": "gq_1795055421201_9",
+              "prompt": "Seekor kuda berlari 100 meter dalam 10 detik. Jarak yang ditempuh dalam 25 detik adalah...",
+              "answer": "250 meter",
+              "options": [
+                "200 meter",
+                "250 meter",
+                "300 meter",
+                "150 meter"
+              ],
+              "clue": "Hitung jarak yang ditempuh kuda dalam waktu 1 detik terlebih dahulu."
+            },
+            {
+              "id": "gq_1795055421201_10",
+              "prompt": "Manakah rasio berikut yang senilai dengan 4 : 7?",
+              "answer": "12 : 21",
+              "options": [
+                "8 : 12",
+                "12 : 21",
+                "16 : 24",
+                "20 : 28"
+              ],
+              "clue": "Kalikan kedua angka pada rasio 4 : 7 dengan bilangan pengali yang sama."
+            }
+          ],
+          "players": [
+            "Akbar Maulana",
+            "Baiq Syakira Azzahra",
+            "Farel Putra Utama",
+            "Husna Aulia",
+            "Lalu Nabil Alamsyah",
+            "Putri Maharani"
+          ],
+          "updatedAt": "2026-11-19T02:31:00.379Z"
+        }
+      }
+    ]
+  },
+  "publicGames": {
+    "game_1795055149446": {
+      "id": "game_1795055149446",
+      "title": "Lomba Lari Bank Soal SD (150 Soal)",
+      "topic": "rasio",
+      "teacherId": "baiq-aprilianingsih",
+      "teacherName": "Baiq Aprilianingsih, S.Pd",
+      "mapel": "Matematika",
+      "kelas": 6,
+      "template": "horse-race",
+      "playMode": "live-mobile",
+      "items": [
+        {
+          "id": "gq_1795055421201_1",
+          "prompt": "Rasio paling sederhana dari 12 : 18 adalah...",
+          "answer": "2 : 3",
+          "options": [
+            "2 : 3",
+            "3 : 2",
+            "4 : 6",
+            "1 : 2"
+          ],
+          "clue": "Bagilah kedua bilangan dengan FPB-nya, yaitu 6."
+        },
+        {
+          "id": "gq_1795055421201_2",
+          "prompt": "Ada 5 kuda putih dan 10 kuda cokelat. Rasio kuda putih terhadap kuda cokelat adalah...",
+          "answer": "1 : 2",
+          "options": [
+            "1 : 2",
+            "2 : 1",
+            "1 : 3",
+            "5 : 15"
+          ],
+          "clue": "Sederhanakan perbandingan 5 : 10 dengan membagi keduanya dengan 5."
+        },
+        {
+          "id": "gq_1795055421201_3",
+          "prompt": "Jika rasio A : B adalah 3 : 4 dan nilai A = 15, maka nilai B adalah...",
+          "answer": "20",
+          "options": [
+            "16",
+            "18",
+            "20",
+            "24"
+          ],
+          "clue": "Kalikan angka 4 dengan hasil pembagian 15 oleh 3."
+        },
+        {
+          "id": "gq_1795055421201_4",
+          "prompt": "Di kelas ada 14 siswa laki-laki dan 16 siswa perempuan. Rasio siswa laki-laki terhadap seluruh siswa adalah...",
+          "answer": "7 : 15",
+          "options": [
+            "7 : 8",
+            "7 : 15",
+            "8 : 15",
+            "14 : 16"
+          ],
+          "clue": "Hitung total seluruh siswa terlebih dahulu, lalu sederhanakan rasionya."
+        },
+        {
+          "id": "gq_1795055421201_5",
+          "prompt": "Untuk membuat 2 kue butuh 6 butir telur. Berapa telur yang dibutuhkan untuk membuat 5 kue?",
+          "answer": "15 telur",
+          "options": [
+            "12 telur",
+            "15 telur",
+            "18 telur",
+            "10 telur"
+          ],
+          "clue": "Cari tahu terlebih dahulu jumlah telur yang dibutuhkan untuk 1 kue."
+        },
+        {
+          "id": "gq_1795055421201_6",
+          "prompt": "Rasio uang Budi dan Ani adalah 2 : 3. Jika jumlah uang mereka Rp50.000, uang Budi adalah...",
+          "answer": "Rp20.000",
+          "options": [
+            "Rp10.000",
+            "Rp20.000",
+            "Rp25.000",
+            "Rp30.000"
+          ],
+          "clue": "Jumlahkan angka rasio (2 + 3) sebagai pembagi dari total uang."
+        },
+        {
+          "id": "gq_1795055421201_7",
+          "prompt": "Rasio umur Kakak dan Adik adalah 5 : 2. Jika selisih umur mereka 9 tahun, umur Adik adalah...",
+          "answer": "6 tahun",
+          "options": [
+            "3 tahun",
+            "6 tahun",
+            "12 tahun",
+            "15 tahun"
+          ],
+          "clue": "Kurangkan angka rasio (5 - 2) untuk menemukan nilai dari 1 bagian."
+        },
+        {
+          "id": "gq_1795055421201_8",
+          "prompt": "Bentuk paling sederhana dari rasio 50 cm : 2 meter adalah...",
+          "answer": "1 : 4",
+          "options": [
+            "1 : 4",
+            "25 : 1",
+            "1 : 2",
+            "4 : 1"
+          ],
+          "clue": "Ubah satuan meter menjadi sentimeter terlebih dahulu sebelum menyederhanakan."
+        },
+        {
+          "id": "gq_1795055421201_9",
+          "prompt": "Seekor kuda berlari 100 meter dalam 10 detik. Jarak yang ditempuh dalam 25 detik adalah...",
+          "answer": "250 meter",
+          "options": [
+            "200 meter",
+            "250 meter",
+            "300 meter",
+            "150 meter"
+          ],
+          "clue": "Hitung jarak yang ditempuh kuda dalam waktu 1 detik terlebih dahulu."
+        },
+        {
+          "id": "gq_1795055421201_10",
+          "prompt": "Manakah rasio berikut yang senilai dengan 4 : 7?",
+          "answer": "12 : 21",
+          "options": [
+            "8 : 12",
+            "12 : 21",
+            "16 : 24",
+            "20 : 28"
+          ],
+          "clue": "Kalikan kedua angka pada rasio 4 : 7 dengan bilangan pengali yang sama."
+        }
+      ],
+      "players": [
+        "Akbar Maulana",
+        "Baiq Syakira Azzahra",
+        "Farel Putra Utama",
+        "Husna Aulia",
+        "Lalu Nabil Alamsyah",
+        "Putri Maharani"
+      ],
+      "updatedAt": "2026-11-19T02:31:00.379Z"
+    }
+  },
+  "gameScores": {
+    "asiah": []
+  },
+  "settings": {
+    "pemerintah": "PEMERINTAH KABUPATEN LOMBOK TENGAH",
+    "dinas": "DINAS PENDIDIKAN DAN KEBUDAYAAN",
+    "namaSekolah": "SD NEGERI LENDANG TELAGA",
+    "alamat": "Lendang Telaga, Kecamatan Kopang, Kabupaten Lombok Tengah, NTB",
+    "logoDataUrl": "",
+    "kepalaSekolah": "",
+    "nipKepalaSekolah": "",
+    "teacherNips": {}
+  }
+}

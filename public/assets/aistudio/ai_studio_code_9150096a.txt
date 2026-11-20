@@ -1,0 +1,44 @@
+Buatkan aplikasi web terpadu yang modern, cerah, responsif, dan ramah layar sentuh Papan Interaktif Digital (PID) maupun laptop/HP untuk kebutuhan administrasi pembelajaran, asesmen, dan gamifikasi kelas bagi seluruh guru SDN Lendang Telaga.
+
+1. Manajemen Profil & Workspace Guru SDN Lendang Telaga
+• Sediakan halaman pilih profil / masuk cepat 1-ketuk yang memuat daftar khusus 10 guru SDN Lendang Telaga berikut (tampilkan cukup nama lengkap guru saja, TANPA keterangan jabatan seperti "Wali Kelas", "Guru Kelas", atau "Guru Mapel"):
+  - Asiah, S.Pd
+  - Baiq Muslihati, S.Pd
+  - Zuhratul Aini, S.Pd
+  - Mukminah, S.Pd
+  - Lita Sumiyarti, S.Pd
+  - Baiq Aprilianingsih, S.Pd
+  - D. Syahminan Zidny, S.Pd.I
+  - Muhamad Subayyil, S.Pd
+  - Pihirman, S.Pd
+  - Zurriatun Thoyyibah, S.Pd
+• Setiap guru memiliki ruang kerja (dashboard), manajemen Daftar Nama Siswa Per Kelas (Kelas 1–6, mendukung input satuan maupun tempel banyak baris sekaligus), serta arsip Folder Saya masing-masing yang terintegrasi.
+• Pada header, dokumen cetak, maupun kolom tanda tangan, cukup tampilkan label "Guru" beserta nama guru tanpa keterangan "Wali Kelas" atau "Guru Pengampu".
+
+2. Modul 1: Generator Perangkat Asesmen & Naskah Soal Otomatis (STS & SAS)
+• Gunakan alur kerja berurutan (3-step wizard) langsung ke input TP tanpa input Capaian Pembelajaran (CP):
+  - Langkah 1 (Identitas & Input TP Manual): Pilih jenis ujian (STS / SAS), Kelas 1–6 (otomatis menampilkan Fase A/B/C), ukuran kertas cetak (A4 / F4), semester, tahun ajaran, dan pilih Mata Pelajaran (PKn, Muatan Lokal, Matematika, Bahasa Indonesia, Seni Budaya, PJOK, Bahasa Inggris, IPAS, PAI BP). Langsung di bawahnya, guru memasukkan rumusan Tujuan Pembelajaran (TP) secara manual dan dinamis (atur jumlah TP, tombol + Tambah TP, dan hapus per baris).
+  - Langkah 2 (Komposisi Soal & Kisi-Kisi): Guru menentukan jumlah butir soal per bentuk (Pilihan Ganda, Isian Singkat, Uraian, Menjodohkan) dan proporsi tingkat kesulitan (Mudah, Sedang, Sulit/HOTS). Sistem menyusun tabel Kisi-Kisi otomatis secara proporsional dari seluruh TP manual yang diinput, dan tabel kisi-kisi tetap dapat diedit guru.
+  - Langkah 3 (Naskah Soal & 3 Lampiran Siap Cetak): Sistem menghasilkan naskah soal lengkap yang mengacu pada kisi-kisi dan TP, ditampilkan dalam pratinjau cetak lengkap dengan Kop Resmi SDN Lendang Telaga beserta 3 lampiran otomatis:
+    1) Kunci Jawaban
+    2) Format Pemeriksaan / Rubrik Penskoran
+    3) Format Daftar Nilai Siswa (baris siswa otomatis mengambil dari roster kelas dan kolom soal 1..N otomatis menyesuaikan jumlah soal)
+• Pastikan fungsi cetak CSS (@media print & @page) presisi membedakan kertas A4 (210 x 297 mm) dan F4/Folio (215 x 330 mm), serta sediakan tombol Save ke Folder Saya dan Print / Export PDF.
+
+3. Modul 2: Generator Game Edukasi Interaktif (4 Template & Single/Multiplayer)
+• Guru memilih mata pelajaran (9 mapel), kelas, template game, mode bermain (Single Player atau Multiplayer), mengisi materi soal/kata (tersedia input manual serta tombol bantu buat draf soal dari topik), dan daftar nama siswa.
+• Sediakan 4 template game interaktif dengan animasi dan efek suara Web Audio API:
+  - Lomba Lari (Running Race): Karakter pelari bergerak maju di lintasan setiap jawaban benar hingga finis.
+  - Teka-Teki Silang (Crossword): Grid mendatar & menurun tersusun otomatis dari kata jawaban dan petunjuk, dilengkapi papan ketik layar sentuh PID/HP.
+  - Menyusun Kata (Word Scramble): Kartu huruf acak ramah sentuhan untuk disusun menjadi jawaban yang tepat.
+  - Lomba Pacuan Kuda (Horse Racing): Balapan kuda dengan animasi derap dan bonus kecepatan (Pacu Cepat) saat menjawab cepat dan beruntun.
+• Dukungan Mode Bermain & Share Link Auto-Play:
+  - Mendukung Single Player, Multiplayer langsung di layar PID kelas (bergiliran), serta Multiplayer Live HP Siswa via WebSocket real-time.
+  - Sediakan tombol Share Link Game sekali klik; ketika siswa membuka tautan di HP, game langsung terbuka siap dimainkan tanpa login atau instalasi, dan progres skornya tampil langsung (live) di layar PID guru.
+
+4. Modul 3: Sistem Folder & Arsip Digital Terpadu + Ekspor Kode
+• Menu Folder Saya menyimpan seluruh perangkat asesmen STS/SAS dan game edukasi per guru dengan fitur filter, pencarian, pratinjau, edit ulang, salin link game, cetak ulang, dan hapus.
+• Sediakan tombol Unduh Semua Kode (.zip) untuk mengunduh seluruh source code proyek secara langsung.
+
+5. Arsitektur Teknis
+• Gunakan React + TypeScript + Tailwind CSS + Express & WebSocket server untuk sinkronisasi multiplayer real-time, Gemini API di sisi server untuk penyusunan kisi-kisi/soal/draf game, serta dukungan penyimpanan persisten cloud Firebase Firestore (dengan Google Sign-In opsional dan security rules ketat) beserta fallback penyimpanan server & localStorage agar tetap lancar digunakan di kelas.

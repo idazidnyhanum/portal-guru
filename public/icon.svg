@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0d9488" />
+    </linearGradient>
+    <linearGradient id="pageGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f0f9ff" />
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="512" height="512" rx="108" fill="url(#bgGrad)" />
+  <circle cx="404" cy="116" r="28" fill="#fbbf24" opacity="0.95" />
+  <path d="M404 72 L412 108 L448 116 L412 124 L404 160 L396 124 L360 116 L396 108 Z" fill="#fef3c7" />
+  <g transform="translate(86, 128)">
+    <path d="M170 42 C132 18, 62 18, 18 38 C10 42, 6 49, 6 58 L6 232 C6 242, 16 248, 26 244 C70 226, 134 226, 170 250 Z" fill="url(#pageGrad)" />
+    <path d="M170 42 C208 18, 278 18, 322 38 C330 42, 334 49, 334 58 L334 232 C334 242, 324 248, 314 244 C270 226, 206 226, 170 250 Z" fill="#e0f2fe" />
+    <rect x="164" y="42" width="12" height="208" rx="6" fill="#0369a1" opacity="0.35" />
+    <rect x="42" y="74" width="96" height="14" rx="7" fill="#0284c7" opacity="0.85" />
+    <rect x="42" y="106" width="84" height="12" rx="6" fill="#0284c7" opacity="0.55" />
+    <rect x="42" y="136" width="90" height="12" rx="6" fill="#0284c7" opacity="0.55" />
+    <rect x="42" y="166" width="68" height="12" rx="6" fill="#0d9488" opacity="0.7" />
+    <rect x="202" y="74" width="96" height="14" rx="7" fill="#0369a1" opacity="0.85" />
+    <rect x="202" y="106" width="82" height="12" rx="6" fill="#0369a1" opacity="0.5" />
+    <rect x="202" y="136" width="90" height="12" rx="6" fill="#0369a1" opacity="0.5" />
+    <circle cx="250" cy="182" r="24" fill="#0d9488" />
+    <path d="M238 182 L246 190 L264 172" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </g>
+</svg>

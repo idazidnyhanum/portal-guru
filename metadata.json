@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Portal Guru SDN Lendang Telaga",
+  "description": "Aplikasi terpadu administrasi pembelajaran, generator perangkat asesmen STS/SAS, dan gamifikasi kelas interaktif untuk guru SDN Lendang Telaga.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
